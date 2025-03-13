@@ -200,7 +200,7 @@ class Network(BaseNetwork):
             noise_hat = self.denoise_fn(torch.cat([y_cond, y_noisy*mask+(1.-mask)*y_0], dim=1), sample_gammas)
             # loss = self.loss_fn(mask*noise, mask*noise_hat)
             # loss = self.loss_fn(mask*noise, mask*noise_hat) + 0.5*self.loss_ffl(mask*noise_hat, mask*noise)
-            loss = self.loss_fn(mask*noise, mask*noise_hat) + 1.5*self.loss_ffl(mask*noise_hat, mask*noise)
+            loss = self.loss_fn(mask*noise, mask*noise_hat) + 1.8*self.loss_ffl(mask*noise_hat, mask*noise)
         else:
             noise_hat = self.denoise_fn(torch.cat([y_cond, y_noisy], dim=1), sample_gammas)
             loss = self.loss_fn(noise, noise_hat)
